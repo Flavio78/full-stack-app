@@ -1,0 +1,15 @@
+# Global options:
+
+[MASTER]
+ignored-modules=os
+# extension-pkg-allow-list=pyodbc,pymssql, lxml.objectify
+extension-pkg-allow-list=pyodbc, pymssql, lxml.objectify
+
+[MESSAGES CONTROL]
+
+# disable = W0212  # Disable the warning first (optional)
+# enable = W0212   # protected-access
+disable = C0114, C0115, C0116, C0209 # missing-module-docstring, missing-class-docstring, missing-function-docstring,  consider-using-f-string
+# disable = C0103 # invalid-name
+# enable = W0621 # redefined-outer-name
+# disable = C0301 # line-too-long
