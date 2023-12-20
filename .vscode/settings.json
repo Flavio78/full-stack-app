@@ -102,5 +102,7 @@
   "isort.check": true,
   "python.analysis.diagnosticMode": "workspace",
   "pylint.importStrategy": "fromEnvironment",
-  "editor.cursorSmoothCaretAnimation": "on"
+  "editor.cursorSmoothCaretAnimation": "on",
+  "git-log--graph.hide-quick-branch-tips": true,
+  "git-log--graph.hide-sidebar-buttons": true
 }
