@@ -1,0 +1,106 @@
+{
+  "cSpell.words": [
+    "cowsay"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.fontLigatures": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": true,
+  "editor.parameterHints.enabled": true,
+  "editor.stickyScroll.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
+  "workbench.editor.enablePreview": false,
+  "workbench.list.openMode": "doubleClick",
+  "workbench.colorTheme": "Dracula",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "material-product-icons",
+  "[html]": {
+    "editor.fontLigatures": false,
+  },
+  "[jsonc]": {
+    "editor.fontLigatures": false,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.fontLigatures": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[python]": {
+    "editor.renderWhitespace": "all",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.fontLigatures": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "ms-mssql.mssql"
+  },
+  "debug.toolBarLocation": "docked",
+  "debug.console.closeOnEnd": true,
+  "prettier.singleQuote": true,
+  "markdown.validate.enabled": true,
+  "typescript.autoClosingTags": false,
+  "javascript.autoClosingTags": false,
+  "html.autoClosingTags": true,
+  "files.trimTrailingWhitespace": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.fixAll": [
+    "source.unusedImports"
+  ],
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "notebook.consolidatedRunButton": true,
+  "notebook.formatOnSave.enabled": true,
+  "git.postCommitCommand": "push",
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  // Using the light mode
+  "indentRainbow.indicatorStyle": "light",
+  // we use a simple 1 pixel wide line
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  // the same colors as above but more visible
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.3)",
+    "rgba(127,255,127,0.3)",
+    "rgba(255,127,255,0.3)",
+    "rgba(79,236,236,0.3)"
+  ],
+  // For which languages indent-rainbow should be activated (if empty it means all).
+  "indentRainbow.includedLanguages": [
+    "python"
+  ], // for example ["nim", "nims", "python"],
+  "errorLens.statusBarIconsEnabled": true,
+  "errorLens.scrollbarHackEnabled": true,
+  "errorLens.statusBarColorsEnabled": true,
+  "explorer.compactFolders": false,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "window.commandCenter": true,
+  "pylint.showNotification": "on",
+  "pylint.lintOnChange": true,
+  "python.testing.pytestArgs": [
+    "."
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "notebook.output.wordWrap": true,
+  "notebook.formatOnCellExecution": true,
+  "black-formatter.importStrategy": "fromEnvironment",
+  "isort.args": [
+    "--profile",
+    "black"
+  ],
+  "isort.importStrategy": "fromEnvironment",
+  "isort.check": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "pylint.importStrategy": "fromEnvironment",
+  "editor.cursorSmoothCaretAnimation": "on"
+}

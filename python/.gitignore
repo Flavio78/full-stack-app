@@ -1,0 +1,15 @@
+.venv/
+.vscode/*
+.idea/
+__pycache__/
+build/
+dist/
+*.spec
+
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/python.code-snippets
+
+*.zip
+LOGIN*.*
+*.bak
