@@ -1,24 +1,21 @@
 from flask import Flask, jsonify
-from sqlalchemy import MetaData, Table, create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, text
 
 app = Flask(__name__)
-engine = create_engine(
-    "mssql+pyodbc://username:password@localhost/dbname?driver=SQL+Server+Native+Client+11.0"
-)
-Session = sessionmaker(bind=engine)
-session = Session()
+try:
+    engine = create_engine(
+        "mssql+pyodbc://user1:Produser1@192.168.1.209:1433/prod?driver=SQL+Server"
+    )
+    connection = engine.connect()
 
-metadata = MetaData()
-users = Table("users", metadata, autoload_with=engine)
+    @app.route("/users", methods=["GET"])
+    def get_users():
+        result = connection.execute(text("SELECT * FROM [prod].[work].[Groups];"))
+        return jsonify([row.serial for row in result])
 
-
-@app.route("/users", methods=["GET"])
-def get_users():
-    query = users.select()
-    result = session.execute(query)
-    return jsonify([row.name for row in result])
-
+except Exception as e:
+    print(f"e: {e}")
+    exit(0)
 
 if __name__ == "__main__":
     app.run(debug=True)
