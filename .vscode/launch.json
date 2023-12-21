@@ -10,7 +10,7 @@
             "request": "attach",
             "type": "chrome",
             "url": "http://localhost:5173",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}/react/src"
         },
         {
             "name": "Python: file corrente",
