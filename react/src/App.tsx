@@ -11,8 +11,8 @@ const FetchDataPage: React.FC<FetchDataPageProps> = ({ interval }) => {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       fetch('http://127.0.0.1:5000/values')
-        .then(response => response.json())
-        .then(data => setUsers(data));
+        .then((response) => response.json())
+        .then((data) => setUsers(data));
     }, interval);
 
     return () => window.clearInterval(intervalId);
@@ -20,7 +20,7 @@ const FetchDataPage: React.FC<FetchDataPageProps> = ({ interval }) => {
 
   return (
     <Container>
-      {users.map(user => (
+      {users.map((user) => (
         <Button variant="contained" color="primary" key={user}>
           {user}
         </Button>
@@ -33,7 +33,9 @@ interface ConfigurationPageProps {
   setInterval: (interval: number) => void;
 }
 
-const ConfigurationPage: React.FC<ConfigurationPageProps> = ({ setInterval }) => {
+const ConfigurationPage: React.FC<ConfigurationPageProps> = ({
+  setInterval,
+}) => {
   const handleIntervalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInterval(Number(event.target.value));
   };
@@ -60,4 +62,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-

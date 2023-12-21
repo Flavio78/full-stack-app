@@ -27,7 +27,7 @@
   },
   "[jsonc]": {
     "editor.fontLigatures": false,
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.fontLigatures": false,
@@ -98,6 +98,9 @@
     "--profile",
     "black"
   ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "isort.importStrategy": "fromEnvironment",
   "isort.check": true,
   "python.analysis.diagnosticMode": "workspace",
