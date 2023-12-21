@@ -1,10 +1,25 @@
+import json
+import sys
+import urllib.parse
+
 from flask import Flask, jsonify
 from sqlalchemy import create_engine, text
 
 app = Flask(__name__)
 try:
+    # Get filename from command line arguments, if not provided use default
+    file_login = sys.argv[1] if len(sys.argv) > 1 else "LOGIN_DB prod.json"
+    with open(file_login, "r", encoding="utf-8") as p_file:
+        config = json.load(p_file)
+        server = list(config.keys())[0]
+        database = config[server]["database"]
+        username = config[server]["username"]
+        password = config[server]["password"]
+        driver = config[server]["driver"]
+        port = config[server]["port"]
+
     engine = create_engine(
-        "mssql+pyodbc://user1:Produser1@192.168.1.209:1433/prod?driver=SQL+Server"
+        f"mssql+pyodbc://{username}:{ urllib.parse.quote_plus(password)}@{server}:{port}/{database}?driver={ urllib.parse.quote_plus(driver)}"
     )
     connection = engine.connect()
 
