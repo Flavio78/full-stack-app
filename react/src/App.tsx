@@ -10,7 +10,7 @@ const FetchDataPage: React.FC<FetchDataPageProps> = ({ interval }) => {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      fetch('http://127.0.0.1:5000/users')
+      fetch('http://127.0.0.1:5000/values')
         .then(response => response.json())
         .then(data => setUsers(data));
     }, interval);

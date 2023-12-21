@@ -8,10 +8,12 @@ try:
     )
     connection = engine.connect()
 
-    @app.route("/users", methods=["GET"])
+    @app.route("/values", methods=["GET"])
     def get_users():
-        result = connection.execute(text("SELECT * FROM [prod].[work].[Params];"))
-        return jsonify([row.prd_values for row in result])
+        result = connection.execute(
+            text("SELECT prd_values FROM [prod].[work].[Params];")
+        )
+        return jsonify([row[0] for row in result])
 
 except Exception as e:
     print(f"e: {e}")
