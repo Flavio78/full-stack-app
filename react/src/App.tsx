@@ -1,18 +1,21 @@
 import { Button, Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-const FetchDataPage: React.FC = () => {
+interface FetchDataPageProps {
+  interval: number;
+}
+
+const FetchDataPage: React.FC<FetchDataPageProps> = ({ interval }) => {
   const [users, setUsers] = useState<string[]>([]);
-  const [interval, setInterval] = useState<number>(10000);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      fetch('/users')
+    const intervalId = window.setInterval(() => {
+      fetch('http://127.0.0.1:5000/users')
         .then(response => response.json())
         .then(data => setUsers(data));
     }, interval);
 
-    return () => clearInterval(intervalId);
+    return () => window.clearInterval(intervalId);
   }, [interval]);
 
   return (
@@ -26,7 +29,11 @@ const FetchDataPage: React.FC = () => {
   );
 };
 
-const ConfigurationPage: React.FC<{ setInterval: (interval: number) => void }> = ({ setInterval }) => {
+interface ConfigurationPageProps {
+  setInterval: (interval: number) => void;
+}
+
+const ConfigurationPage: React.FC<ConfigurationPageProps> = ({ setInterval }) => {
   const handleIntervalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInterval(Number(event.target.value));
   };

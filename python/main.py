@@ -10,8 +10,8 @@ try:
 
     @app.route("/users", methods=["GET"])
     def get_users():
-        result = connection.execute(text("SELECT * FROM [prod].[work].[Groups];"))
-        return jsonify([row.serial for row in result])
+        result = connection.execute(text("SELECT * FROM [prod].[work].[Params];"))
+        return jsonify([row.prd_values for row in result])
 
 except Exception as e:
     print(f"e: {e}")
