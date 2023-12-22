@@ -1,4 +1,4 @@
-import { Button, Container, Input } from '@mui/material';
+import { Button, Container, Input, InputLabel } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 interface FetchDataPageProps {
@@ -20,6 +20,9 @@ const FetchDataPage: React.FC<FetchDataPageProps> = ({ interval }) => {
 
   return (
     <Container>
+      <InputLabel required={false} disabled={true}>
+        Data
+      </InputLabel>
       {users.map((user) => (
         <Button variant="contained" color="primary" key={user}>
           {user}
@@ -54,7 +57,7 @@ const ConfigurationPage: React.FC<ConfigurationPageProps> = ({
 
   return (
     <Container>
-      <label>
+      <InputLabel>
         Interval (ms):
         <Input
           type="number"
@@ -64,7 +67,7 @@ const ConfigurationPage: React.FC<ConfigurationPageProps> = ({
           }}
           onChange={handleIntervalChange}
         />
-      </label>
+      </InputLabel>
     </Container>
   );
 };
