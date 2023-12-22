@@ -1,4 +1,4 @@
-import { Button, Container, InputLabel } from '@mui/material';
+import { Button, CircularProgress, Container, InputLabel } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 
 interface FetchDataPageProps {
@@ -6,13 +6,23 @@ interface FetchDataPageProps {
 }
 
 const FetchDataPage: FC<FetchDataPageProps> = ({ interval }) => {
-  const [users, setUsers] = useState<string[]>([]);
+  const [values, setValues] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
+      setLoading(true);
       fetch('http://127.0.0.1:5000/values')
         .then((response) => response.json())
-        .then((data) => setUsers(data));
+        .then((data) => {
+          setValues(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setLoading(false);
+        });
     }, interval);
 
     return () => window.clearInterval(intervalId);
@@ -23,11 +33,22 @@ const FetchDataPage: FC<FetchDataPageProps> = ({ interval }) => {
       <InputLabel required={false} disabled={true}>
         Data
       </InputLabel>
-      {users.map((user) => (
-        <Button variant="contained" color="primary" key={user}>
-          {user}
-        </Button>
-      ))}
+      {loading ? (
+        <InputLabel required={false} disabled={true}>
+          <CircularProgress />
+          Loading ...
+        </InputLabel>
+      ) : error ? (
+        <InputLabel required={false} disabled={true} error={true}>
+          Error
+        </InputLabel>
+      ) : (
+        values.map((user) => (
+          <Button variant="contained" color="primary" key={user}>
+            {user}
+          </Button>
+        ))
+      )}
     </Container>
   );
 };
