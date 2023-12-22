@@ -1,5 +1,6 @@
 import { Button, CircularProgress, Container, InputLabel } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
+import { ENDPOINT_VALUES } from '../constants/APIEndpoints';
 
 interface FetchDataPageProps {
   interval: number;
@@ -13,11 +14,12 @@ const FetchDataPage: FC<FetchDataPageProps> = ({ interval }) => {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setLoading(true);
-      fetch('http://127.0.0.1:5000/values')
+      fetch(ENDPOINT_VALUES)
         .then((response) => response.json())
         .then((data) => {
           setValues(data);
           setLoading(false);
+          setError(null);
         })
         .catch((error) => {
           setError(error);
