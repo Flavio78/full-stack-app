@@ -1,4 +1,4 @@
-import { Button, Container } from '@mui/material';
+import { Button, Container, Input } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 interface FetchDataPageProps {
@@ -36,15 +36,34 @@ interface ConfigurationPageProps {
 const ConfigurationPage: React.FC<ConfigurationPageProps> = ({
   setInterval,
 }) => {
+  const MIN_INTERVAL = 2000;
+  const MAX_INTERVAL = 60000;
+
   const handleIntervalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInterval(Number(event.target.value));
+    const inputValue = parseInt(event.target.value, 10);
+    const minValue = MIN_INTERVAL;
+    const maxValue = MAX_INTERVAL;
+
+    // Validate the input value
+    if (inputValue < minValue) {
+      event.target.value = `${minValue}`; // Reset to the minimum value
+    } else if (inputValue > maxValue) {
+      event.target.value = `${maxValue}`; // Reset to the maximum value
+    } else setInterval(Number(event.target.value));
   };
 
   return (
     <Container>
       <label>
         Interval (ms):
-        <input type="number" onChange={handleIntervalChange} />
+        <Input
+          type="number"
+          inputProps={{
+            min: MIN_INTERVAL, // Set the minimum value
+            max: MAX_INTERVAL, // Set the maximum value
+          }}
+          onChange={handleIntervalChange}
+        />
       </label>
     </Container>
   );
@@ -55,8 +74,8 @@ const App: React.FC = () => {
 
   return (
     <Container>
-      <ConfigurationPage setInterval={setInterval} />
       <FetchDataPage interval={interval} />
+      <ConfigurationPage setInterval={setInterval} />
     </Container>
   );
 };

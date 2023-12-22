@@ -4,7 +4,12 @@ import urllib.parse
 
 from flask import Flask, jsonify
 from sqlalchemy import create_engine, text
-from sqlalchemy.exc import InterfaceError, OperationalError, ProgrammingError
+from sqlalchemy.exc import (
+    DBAPIError,
+    InterfaceError,
+    OperationalError,
+    ProgrammingError,
+)
 from utilities.functions import print_error
 
 app = Flask(__name__)
@@ -33,21 +38,24 @@ try:
             )
             return jsonify([row[0] for row in result])
         except ProgrammingError:
-            print_error("Error in query")
+            print_error("query")
             exit(5)
+        except ValueError:
+            print_error("value")
+            exit(6)
+        except DBAPIError:
+            print_error("occupied connection")
+            exit(7)
 
 except OperationalError as error:
-    print_error("Error in connection")
+    print_error("connection")
     exit(3)
 except InterfaceError as error:
-    print_error("Error in DB driver")
+    print_error("driver")
     exit(4)
 except FileNotFoundError as error:
-    print_error("Configuration file not found")
+    print_error("configuration file not found")
     exit(2)
-except ValueError as error:
-    print_error("Generic error")
-    exit(1)
 
 if __name__ == "__main__":
     app.run(debug=True)
