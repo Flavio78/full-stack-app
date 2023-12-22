@@ -1,20 +1,18 @@
 import { Container, Input, InputLabel, ToggleButton } from '@mui/material';
-import React, { Dispatch } from 'react';
+import React, { Dispatch, FC, SetStateAction } from 'react';
+import { MAX_INTERVAL, MIN_INTERVAL } from '../constants/UIsettings';
 
 interface ConfigurationPageProps {
   isDarkMode: boolean;
-  setInterval: Dispatch<React.SetStateAction<number>>;
-  setIsDarkMode: Dispatch<React.SetStateAction<boolean>>;
+  setInterval: Dispatch<SetStateAction<number>>;
+  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
 }
 
-const ConfigurationPage: React.FC<ConfigurationPageProps> = ({
+const ConfigurationPage: FC<ConfigurationPageProps> = ({
   setInterval,
   setIsDarkMode,
   isDarkMode,
 }) => {
-  const MIN_INTERVAL = 2000;
-  const MAX_INTERVAL = 60000;
-
   const handleIntervalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = parseInt(event.target.value, 10);
     const minValue = MIN_INTERVAL;

@@ -1,17 +1,19 @@
 import { Container, CssBaseline, useMediaQuery } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useMemo, useState } from 'react';
+import { FC, useState } from 'react';
+import { MIN_INTERVAL } from './constants/UIsettings';
 import ConfigurationPage from './pages/ConfigurationPage';
 import FetchDataPage from './pages/FetchDataPage';
 
-const App: React.FC = () => {
+const App: FC = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [interval, setInterval] = useState<number>(10000);
+  const [interval, setInterval] = useState<number>(MIN_INTERVAL);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(prefersDarkMode); // State to toggle mode
 
   const lightTheme = createTheme({ palette: { mode: 'light' } });
   const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
+  /*
   const theme = useMemo(
     () =>
       createTheme({
@@ -21,6 +23,7 @@ const App: React.FC = () => {
       }),
     [prefersDarkMode]
   );
+  */
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>

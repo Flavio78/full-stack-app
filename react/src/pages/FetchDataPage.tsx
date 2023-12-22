@@ -1,11 +1,11 @@
 import { Button, Container, InputLabel } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 interface FetchDataPageProps {
   interval: number;
 }
 
-const FetchDataPage: React.FC<FetchDataPageProps> = ({ interval }) => {
+const FetchDataPage: FC<FetchDataPageProps> = ({ interval }) => {
   const [users, setUsers] = useState<string[]>([]);
 
   useEffect(() => {
