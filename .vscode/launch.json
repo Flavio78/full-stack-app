@@ -5,6 +5,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch npm dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
+    },
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/react/",
+      "userDataDir": false,
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-features=Translate",
+        "--auto-open-devtools-for-tabs"
+      ]
+    },
+
+    {
       "name": "Attach to Chrome",
       "port": 9222,
       "request": "attach",
@@ -14,7 +35,7 @@
     },
     {
       "name": "Python: file corrente",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
