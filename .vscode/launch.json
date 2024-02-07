@@ -42,5 +42,11 @@
       "justMyCode": true,
       "args": ["python/LOGIN_DB prod.json"]
     }
+  ],
+  "compounds": [
+    {
+      "name": "Debug with Chrome",
+      "configurations": ["Launch npm dev", "Launch Chrome"]
+    }
   ]
 }
